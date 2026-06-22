@@ -314,6 +314,8 @@ PAGE_IMG_PINS = {
                 "A Wolves Removals lorry parked on a residential street for a move", False),
             "Single Items": ("wolves-team-loading-van-sussex",
                 "The Wolves Removals team loading a van for a man-and-van job in Sussex", False),
+            "Clearing a Few Rooms": ("furniture-wrapped-blue-moving-blankets",
+                "Furniture wrapped in blue quilted moving blankets ready for a man-and-van move", False),
         },
     },
     "international-removals": {

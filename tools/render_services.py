@@ -135,7 +135,7 @@ STORAGE_IMAGERY = {
 _ANTIQUES = [
     ("antiques-room-statues-sea-view", "A grand room of antiques and classical statues with a sea view"),
     ("antique-drawing-room-interior", "An elegant antique-furnished drawing room interior"),
-    ("fine-art-gallery-interior", "A fine-art gallery interior during a specialist removal"),
+    ("furniture-wrapped-blue-moving-blankets", "Furniture wrapped in blue quilted moving blankets ready for transport"),
     ("period-room-marble-fireplace-antiques", "A period room with a marble fireplace and fine antiques"),
     ("movers-with-fragile-mirror-crate", "Wolves movers positioning a bespoke crate for a large mirror"),
     ("crew-dining-room-antiques", "Wolves crew handling antiques in a grand dining room"),
@@ -232,7 +232,7 @@ SERVICE_PHOTOS = {
 # Reserved in _used so they never duplicate a hero/intro/panel/body image (R9-dup-img safe).
 _ANTIQUES_ALT = dict(_ANTIQUES)
 ANTIQUES_GALLERY = [(_fn, _ANTIQUES_ALT[_fn]) for _fn in [
-    "antiques-room-statues-sea-view", "fine-art-gallery-interior", "period-room-marble-fireplace-antiques",
+    "antiques-room-statues-sea-view", "furniture-wrapped-blue-moving-blankets", "period-room-marble-fireplace-antiques",
     "movers-with-fragile-mirror-crate", "crew-dining-room-antiques", "wolves-movers-carrying-framed-mirror",
     "carrying-gilt-framed-landscape-painting", "craning-bronze-statue-in-garden", "garden-classical-statues",
     "formal-garden-statue", "wrapping-bronze-bust", "handling-framed-portrait",
@@ -280,6 +280,8 @@ PAGE_IMG_PINS = {
                 "A Wolves Removals surveyor with a clipboard assessing items for a move quote", False),
             "One Family": ("wolves-removals-team-fleet-vans",
                 "The Wolves Removals family team beside their fleet of removal vans", False),
+            "Beyond the Standard Move": ("loading-wooden-crate-into-container",
+                "A Wolves Removals crew loading a wooden crate into a storage container", False),
         },
     },
     # Commercial: feature panel uses a real team photo (not the Wolves Storage logo).
@@ -295,6 +297,10 @@ PAGE_IMG_PINS = {
                 "The Wolves Removals team ready beside their van for an out-of-hours commercial move", False),
             "Desk Crate Systems": ("building-wooden-crate-for-fine-art",
                 "A Wolves Removals crew building a bespoke wooden crate around a long item", False),
+            "Specialist Crating": ("craning-bronze-horse-statue-garden",
+                "A Wolves Removals crane lifting a bronze horse statue in a garden", False),
+            "IT, Server": ("specialist-equipment-chamber-office-move",
+                "Wolves Removals moving a wrapped specialist pressure chamber out of an office", False),
         },
     },
     # Man and van: feature panel uses the fleet-in-a-field photo (replacing the depot
@@ -303,6 +309,19 @@ PAGE_IMG_PINS = {
         "panel": ("wolves-removals-fleet-vans-field",
                   "The Wolves Removals fleet of vans and Luton lorries lined up in a Sussex field"),
         "exclude": ["removals-van-storage-depot-3"],
+        "sections": {
+            "Access, Parking": ("removal-lorry-on-residential-street",
+                "A Wolves Removals lorry parked on a residential street for a move", False),
+            "Single Items": ("wolves-team-loading-van-sussex",
+                "The Wolves Removals team loading a van for a man-and-van job in Sussex", False),
+        },
+    },
+    "international-removals": {
+        "exclude": ["wrapped-furniture-empty-room"],   # freed when the destination row became a timeline
+        "sections": {
+            "Inventories, Documentation": ("wolves-clipboard-in-storage-warehouse",
+                "A Wolves Removals clipboard and inventory in the storage warehouse", False),
+        },
     },
     # Export packing: the "Why Move With Wolves Removals?" feature panel uses the new
     # furniture-wrapping photo instead of the default crate-outside-townhouse shot.
@@ -355,6 +374,19 @@ RISK_STEPS = [
      "Risk Prioritisation", "Rank risks by potential damage to goods"),
     (_ri('<path d="M12 3l7 2.4v5.4c0 4.4-3 7.3-7 8.4-4-1.1-7-4-7-8.4V5.4L12 3z"/><path d="M9 12l2 2 4-4"/>'),
      "Risk Treatment", "Avoid, minimise, transfer or accept"),
+]
+
+# Destination-end journey for the international page (same vertical timeline component,
+# wording tuned to the "Destination Delivery, Unpacking & Storage" paragraph).
+INTL_STEPS = [
+    (_ri('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.9 5.4 3.9 8.5s-1.5 6.1-3.9 8.5c-2.4-2.4-3.9-5.4-3.9-8.5s1.5-6.1 3.9-8.5z"/>'),
+     "Customs Clearance", "Cleared through customs at destination"),
+    (_ri('<rect x="2.5" y="6.5" width="11" height="9" rx="1"/><path d="M13.5 9.5h4l3 3v3h-7z"/><circle cx="6.5" cy="17.3" r="1.7"/><circle cx="17.3" cy="17.3" r="1.7"/>'),
+     "Delivery To Your Door", "Destination agents deliver to your address"),
+    (_ri('<path d="M4 10.5V8.5A2.5 2.5 0 0 1 6.5 6h11A2.5 2.5 0 0 1 20 8.5v2"/><path d="M3.5 10.5h17a1 1 0 0 1 1 1V16H2.5v-4.5a1 1 0 0 1 1-1z"/><path d="M5 16v2M19 16v2"/>'),
+     "Unloading &amp; Placement", "Furniture set in the rooms you choose"),
+    (_ri('<path d="M3.5 8.5l3-4.5h11l3 4.5"/><path d="M3.5 8.5v9.5a1 1 0 0 0 1 1h15a1 1 0 0 0 1-1V8.5"/><path d="M3.5 8.5h17M12 4v4.5"/>'),
+     "Unpacking &amp; Cartons", "Boxes unpacked and packaging removed"),
 ]
 
 def build_service(s):
@@ -460,6 +492,11 @@ def build_service(s):
         if s["slug"] == "commercial-removals" and "Health, Safety" in _h2:   # vertical risk-method timeline
             parts.append(E.methodology_timeline(RISK_STEPS,
                 "Wolves Removals Risk Assessment Methodology", "Sussex UK Professional Removals",
+                _inner, bg=nb(), reverse=True))
+            continue
+        if s["slug"] == "international-removals" and "Destination Delivery" in _h2:   # destination-journey timeline
+            parts.append(E.methodology_timeline(INTL_STEPS,
+                "Wolves Removals Destination Handover", "Door-to-Door Worldwide Moves",
                 _inner, bg=nb(), reverse=True))
             continue
         _sp = next((v for k, v in _sections.items() if k in _h2), None)   # heading-substring pin

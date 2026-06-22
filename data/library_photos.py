@@ -8,7 +8,7 @@ LIBRARY_PHOTOS = [
     ('removals-van-fleet-field-4', 'Wolves Removals van fleet parked in a field'),
     ('removals-van-fleet-field-5', 'Wolves Removals van fleet parked in a field'),
     ('stacked-storage-containers-warehouse', 'Stacked wooden storage containers in a storage warehouse'),
-    ('fine-art-gallery-interior', 'Long gallery interior with framed art and a marble bust being handled'),
+    ('furniture-wrapped-blue-moving-blankets', 'Furniture wrapped in blue quilted moving blankets with a fragile-contents box'),
     ('garden-classical-statues', 'Garden with classical horse and figure statues by a hedge'),
     ('loading-wrapped-item-van', 'Crew carrying a wrapped item to a removals van'),
     ('removal-van-driveway-aerial', 'Aerial view of a removals van on a house driveway'),

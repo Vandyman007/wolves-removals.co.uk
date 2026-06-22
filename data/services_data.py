@@ -152,11 +152,11 @@ SERVICES = [
         <p>With Wolves Man and Van you get peace of mind that your belongings are handled by professionals, and you don&rsquo;t have to worry about hurting yourself or causing any damage. Our service is also ideal for office moves and business relocation &mdash; we can move anything to anywhere.</p>"""),
     ("Pricing & Key Terms",
      """<p>Transparent pricing with no hidden fees, starting from £80. A few key terms to note:</p>
-        <ul class="tick-list"><li>Hourly charges apply from depot to depot</li><li>£0.45 per mile from depot to depot for fuel</li><li>Goods-in-transit insurance excluded if you choose the van and driver only option</li><li>Bookings are based on receipt of your deposit for our minimum charge</li></ul>
+        <ul class="tick-list"><li>Hourly charges apply from depot to depot</li><li>Goods-in-transit insurance excluded if you choose the van and driver only option</li><li>Bookings are based on receipt of your deposit for our minimum charge</li></ul>
         <p>Please don&rsquo;t hesitate to <a href="/contact-us/">contact us</a> with any specific queries about our man and van or courier service.</p>"""),
   ],
   "faqs": [
-    ("How much is a man and van in Sussex?", """<p>Our man and van service starts from £80, with hourly charges from depot to depot plus £0.45 per mile for fuel. <a href="/get-a-quote/">Request a quote</a> for your exact price.</p>"""),
+    ("How much is a man and van in Sussex?", """<p>Our man and van service starts from £80, with hourly charges from depot to depot. <a href="/get-a-quote/">Request a quote</a> for your exact price.</p>"""),
     ("Is it suitable for a few items only?", """<p>Yes &mdash; it&rsquo;s ideal for single items, small loads, students and rental moves.</p>"""),
     ("Can you help with loading and lifting?", """<p>Yes, our trained team loads, secures and transports your items &mdash; you don&rsquo;t risk injury or damage doing it yourself.</p>"""),
     ("Do you cover business and office moves?", """<p>Absolutely &mdash; man and van is great for smaller office moves; for larger jobs see our <a href="/services/commercial-removals/">commercial removals</a>.</p>"""),

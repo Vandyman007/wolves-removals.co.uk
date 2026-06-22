@@ -289,8 +289,6 @@ PAGE_IMG_PINS = {
         "sections": {
             "A Single Coordinator": ("wolves-move-coordinator-portrait",
                 "A Wolves Removals move coordinator who owns your whole commercial relocation", False),
-            "Health, Safety": ("wolves-risk-assessment-methodology",
-                "Wolves Removals risk assessment methodology infographic for Sussex commercial removals", True),
             "Who Our Commercial": ("wolves-crew-setting-up-office",
                 "The Wolves Removals crew setting up desks and equipment in a commercial office", False),
             "Out-of-Hours": ("wolves-removals-team-fleet-vans",
@@ -339,6 +337,25 @@ PAGE_IMG_PINS = {
         **_ANTIQUES_HIP,
     },
 }
+
+def _ri(inner):   # line-art icon for a risk-methodology step (tan disc supplies the dark colour)
+    return ('<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" '
+            'stroke-linecap="round" stroke-linejoin="round" class="w-7 h-7 lg:w-8 lg:h-8">' + inner + '</svg>')
+
+# The 5-stage risk-assessment methodology shown as a vertical icon timeline on the
+# commercial page (replaces the old flat infographic image).
+RISK_STEPS = [
+    (_ri('<circle cx="10.5" cy="10.5" r="6.5"/><path d="M20.5 20.5l-5-5"/>'),
+     "Risk Identification", "Survey properties for access hazards"),
+    (_ri('<path d="M12 3.5v16M5.5 19.5h13"/><path d="M12 6l6.5 1.8M12 6 5.5 7.8"/><path d="M5.5 7.8 3 13a2.7 2.7 0 0 0 5 0L5.5 7.8zM18.5 7.8 16 13a2.7 2.7 0 0 0 5 0l-2.5-5.2z"/>'),
+     "Risk Analysis", "Evaluate lifting weights and transit times"),
+    (_ri('<rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9.5 4a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1h-5V4z"/><path d="M8.7 12.3l1.8 1.8 3.8-3.8"/>'),
+     "Risk Evaluation", "Compare against manual handling guidelines"),
+    (_ri('<path d="M4 20h16"/><rect x="5" y="12" width="3.4" height="6" rx="0.6"/><rect x="10.3" y="8.5" width="3.4" height="9.5" rx="0.6"/><rect x="15.6" y="5" width="3.4" height="13" rx="0.6"/>'),
+     "Risk Prioritisation", "Rank risks by potential damage to goods"),
+    (_ri('<path d="M12 3l7 2.4v5.4c0 4.4-3 7.3-7 8.4-4-1.1-7-4-7-8.4V5.4L12 3z"/><path d="M9 12l2 2 4-4"/>'),
+     "Risk Treatment", "Avoid, minimise, transfer or accept"),
+]
 
 def build_service(s):
     faqs = s["faqs"]
@@ -440,6 +457,11 @@ def build_service(s):
     _exp = E.load_expansion("services", s["slug"])
     for _ei, (_h2, _html) in enumerate(_exp["sections"]):
         _inner = f'<h2 class="relative leading-tight text-black">{esc(_h2)}</h2>{_html}'
+        if s["slug"] == "commercial-removals" and "Health, Safety" in _h2:   # vertical risk-method timeline
+            parts.append(E.methodology_timeline(RISK_STEPS,
+                "Wolves Removals Risk Assessment Methodology", "Sussex UK Professional Removals",
+                _inner, bg=nb(), reverse=True))
+            continue
         _sp = next((v for k, v in _sections.items() if k in _h2), None)   # heading-substring pin
         _f = (_sp[0], _sp[1]) if _sp else None
         _fc = bool(_sp and len(_sp) > 2 and _sp[2])

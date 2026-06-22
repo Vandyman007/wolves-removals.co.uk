@@ -347,11 +347,11 @@ def _split_row(inner_html, photo, reverse=False, bg="bg-white", contain=False, o
     `min_h` sets a desktop minimum row height (e.g. "22rem") so short sections still get a
     proper-sized image while the image still stretches to match longer text."""
     src = "images/photos/" + photo[0] + ".webp"
-    if contain:   # diagrams/infographics: whole image on white, TOP-aligned so a tall
-                  # portrait lines up with the heading beside it. Absolutely positioned
-                  # (like the cover branch) so it never pushes the row taller than the text.
-        media = ('<div class="relative h-72 sm:h-96 lg:h-full overflow-hidden rounded-xl shadow-custom bg-white">'
-                 + img(src, photo[1], cls="absolute inset-0 w-full h-full object-contain object-top p-3") + '</div>')
+    if contain:   # diagrams/infographics: shown LARGE on a white card, never cropped and NOT
+                  # locked to the text height (a tall portrait beside short copy would shrink
+                  # to nothing at wide widths). The text is vertically centred beside it.
+        media = ('<div class="flex justify-center rounded-xl shadow-custom bg-white p-3 lg:p-4">'
+                 + img(src, photo[1], cls="block w-auto max-w-full max-h-[28rem] lg:max-h-[44rem] object-contain", eager=True) + '</div>')
     else:
         _ex = f'style="object-position:{obj_pos}"' if obj_pos != "center" else ""
         _mh_media = f' lg:min-h-[{min_h}]' if min_h else ""   # floor on the image box itself
@@ -371,7 +371,8 @@ def _split_row(inner_html, photo, reverse=False, bg="bg-white", contain=False, o
     else:         # image right, text left
         text_d = f'<div class="col-span-12 lg:col-span-6 lg:col-start-2{_tx}">{inner_html}</div>'
         pic_d = f'<div class="col-span-12 lg:col-span-4 lg:col-start-8">{media}</div>'
-    return section(f'<div class="grid grid-cols-12 gap-6 lg:gap-10 items-stretch">{text_d}{pic_d}</div>',
+    _align = "items-start lg:items-center" if contain else "items-stretch"
+    return section(f'<div class="grid grid-cols-12 gap-6 lg:gap-10 {_align}">{text_d}{pic_d}</div>',
                    bg=bg, pad="pt-6 lg:pt-10 pb-6 lg:pb-10", extra="logo-row overflow-hidden")
 
 def media_rows(inner_html, seed, bg="bg-white", used=None, group=2, force=None, force_contain=False, force_pos=None, pins=None, min_h=None, vary=True):
@@ -1259,6 +1260,39 @@ def process_topic(name):
     if "european" in n: return "European Removal"
     if "man" in n and "van" in n: return "Man &amp; Van"
     return "Removal"
+
+def methodology_timeline(steps, title, subtitle, write_up_html, bg="bg-white", reverse=True):
+    """Two-column section: a vertical icon timeline (the 'methodology' card) on one side and
+    a write-up (heading + copy) on the other, vertically centred beside it. `steps` is a list
+    of (icon_svg, label, desc). Badges are tan discs with a dark line icon (like the process
+    medallions) joined by a vertical connector line."""
+    items = ""
+    for i, (svg, label, desc) in enumerate(steps):
+        items += (
+            f'<li class="reveal-lr relative flex items-start gap-4 lg:gap-5" style="transition-delay:{i*110}ms">'
+            '<span class="relative z-10 shrink-0 inline-flex items-center justify-center w-14 h-14 '
+            'lg:w-16 lg:h-16 rounded-full bg-[#dad6c2] border-2 border-[#262626] text-[#262626]">'
+            f'{svg}</span>'
+            '<div class="pt-1 lg:pt-2">'
+            f'<h3 class="uppercase font-bold text-black leading-tight text-base lg:text-lg">{label}</h3>'
+            f'<p class="text-darkgrey leading-snug mt-0.5">{desc}</p>'
+            '</div></li>')
+    card = (
+        '<div class="bg-white rounded-2xl shadow-custom border border-border p-6 lg:p-8 h-full">'
+        f'<div class="reveal-lr text-center mb-6 lg:mb-7"><div class="font-extrabold text-black text-xl lg:text-2xl leading-tight">{title}</div>'
+        f'<div class="text-darkgrey uppercase tracking-wide text-xs sm:text-sm mt-1">{subtitle}</div></div>'
+        '<ol class="relative space-y-6 lg:space-y-7">'
+        '<span aria-hidden="true" class="absolute top-7 lg:top-8 bottom-7 lg:bottom-8 left-7 lg:left-8 -translate-x-1/2 w-0.5 bg-[#262626]/30"></span>'
+        f'{items}</ol></div>')
+    # write-up sits top-aligned with the timeline (its heading lines up with the card title)
+    writeup = f'<div class="reveal-lr space-y-4 lg:space-y-5 [&_p]:text-darkgrey [&_p]:leading-relaxed">{write_up_html}</div>'
+    left, right = (card, writeup) if reverse else (writeup, card)
+    return section(
+        '<div class="grid grid-cols-12 gap-8 lg:gap-12 items-start">'
+        f'<div class="col-span-12 lg:col-span-6 lg:col-start-1">{left}</div>'
+        f'<div class="col-span-12 lg:col-span-6 lg:col-start-7">{right}</div>'
+        '</div>'
+        f'<script defer src="/js/reveal.js?v={ASSET_VER}"></script>', bg=bg, extra="logo-row overflow-hidden")
 
 def step_process(bg="bg-beige", topic="Removal", heading=None, intro=None):
     """Shared chevron step-process section. `topic` tailors the heading + the 8 step

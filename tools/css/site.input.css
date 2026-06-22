@@ -522,6 +522,16 @@
    creme glyph) to keep it visible. On grey-hover cards the medallion stays creme (pops on grey). */
 .card-hov-creme:hover .ico-badge { background: #262626; color: #dad6c2; border-color: #262626; }
 
+/* Scroll-reveal: slide in from the left as the element scrolls into view (reveal.js adds
+   .is-in via IntersectionObserver). Per-item stagger is set with inline transition-delay. */
+.reveal-lr { opacity: 0; transform: translateX(-2.5rem);
+             transition: opacity .6s cubic-bezier(.22,.61,.36,1), transform .6s cubic-bezier(.22,.61,.36,1);
+             will-change: opacity, transform; }
+.reveal-lr.is-in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal-lr { opacity: 1 !important; transform: none !important; transition: none; }
+}
+
 /* --- Facebook social-post feed: carousel -> hover -> lightbox --- */
 .social-wrap { position: relative; }
 .social-track { display: flex; gap: 1rem; overflow-x: auto; scroll-snap-type: x mandatory; scroll-behavior: smooth; padding: .5rem 0; scrollbar-width: none; -ms-overflow-style: none; }

@@ -1280,7 +1280,7 @@ def methodology_timeline(steps, title, subtitle, write_up_html, bg="bg-white", r
     card = (
         '<div class="bg-white rounded-2xl shadow-custom border border-border p-6 lg:p-8 h-full">'
         f'<div class="reveal-lr text-center mb-6 lg:mb-7"><div class="font-extrabold text-black text-xl lg:text-2xl leading-tight">{title}</div>'
-        f'<div class="text-darkgrey uppercase tracking-wide text-xs sm:text-sm mt-1">{subtitle}</div></div>'
+        f'<div class="text-black uppercase tracking-wide text-xs sm:text-sm mt-1">{subtitle}</div></div>'
         '<ol class="relative space-y-6 lg:space-y-7">'
         '<span aria-hidden="true" class="absolute top-7 lg:top-8 bottom-7 lg:bottom-8 left-7 lg:left-8 -translate-x-1/2 w-0.5 bg-[#262626]/30"></span>'
         f'{items}</ol></div>')

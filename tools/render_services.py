@@ -361,6 +361,9 @@ PAGE_IMG_PINS = {
     "custom-crate-service": {
         "panel": ("wheeling-export-crate-on-trolley",
                   "A Wolves Removals export crate being wheeled out on a trolley"),
+        "intro": ("professional-removals-movers-sussex-property",
+                  "Professional Wolves Removals movers at a Sussex property"),
+        "exclude": ["careful-packing-sussex-home-removal"],   # freed from the intro; keep it off the page
         "sections": {
             "Pieces a Crate Is Built For": ("loading-wooden-crate-into-container",
                 "A Wolves Removals crew loading a wooden crate into a storage container", False),

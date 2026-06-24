@@ -251,6 +251,18 @@ _ANTIQUES_HIP = {
     "panel": ("antique-relief-sculptures-fine-art", "Antique relief sculptures prepared for careful transport"),
 }
 PAGE_IMG_PINS = {
+    # Full unpacking: lead with linens/possessions being put away (the unpack itself),
+    # not packing/crating shots.
+    "full-unpacking-service": {
+        "panel": ("unpacked-linens-folded-in-closet",
+                  "Linens and towels neatly folded and put away in a closet after a full unpacking service"),
+        "sections": {
+            "What Our Full Unpacking Service Actually Covers": ("folded-blankets-in-wooden-wardrobe",
+                "Blankets and towels folded and arranged in a wooden wardrobe during a full unpacking service", False),
+            "Furniture Placement, Reassembly": ("furniture-wrapped-blue-moving-blankets",
+                "Furniture wrapped in blue moving blankets being positioned during an unpack", False),
+        },
+    },
     # House removals: pin the "Smooth Moving Day" row to a careful-handling photo instead of
     # the off-topic empty-period-room shot.
     "house-removals": {

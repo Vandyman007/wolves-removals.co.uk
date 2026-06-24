@@ -354,6 +354,18 @@ PAGE_IMG_PINS = {
             "carrying-antique-piano-specialist-removals",
         ],
     },
+    "piano-moving": {
+        "panel": ("carrying-antique-piano-specialist-removals",
+                  "Wolves Removals specialists carrying an antique piano during a careful move"),
+    },
+    "contract-delivery-services": {
+        "sections": {
+            "White-Goods Delivery": ("wrapped-furniture-and-labelled-boxes",
+                "A room of wrapped furniture and labelled boxes packed ready for delivery", False),
+            "How a Contract Delivery": ("wolves-removals-vans-at-depot",
+                "Two Wolves Removals vans parked outside the depot at Kings House", False),
+        },
+    },
     "white-glove-service": {
         "panel": ("wolves-crew-handling-large-framed-art",
                   "Wolves Removals crew in white gloves handling a large framed artwork"),

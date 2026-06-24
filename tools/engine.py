@@ -358,14 +358,7 @@ def _split_row(inner_html, photo, reverse=False, bg="bg-white", contain=False, o
         media = (f'<div class="relative h-56 sm:h-72 lg:h-full{_mh_media} overflow-hidden rounded-xl shadow-custom">'
                  + img(src, photo[1], cls="absolute inset-0 w-full h-full object-cover", extra=_ex) + '</div>')
     _tx = " lg:self-center" if min_h else ""   # short text centres beside the min-height image
-    if contain:   # diagrams/infographics get a wider image column (~50% larger than a photo row)
-        if reverse:   # image left, text right
-            pic_d  = f'<div class="col-span-12 lg:col-span-5 lg:col-start-1 lg:row-start-1">{media}</div>'
-            text_d = f'<div class="col-span-12 lg:col-span-6 lg:col-start-7{_tx}">{inner_html}</div>'
-        else:         # image right, text left
-            text_d = f'<div class="col-span-12 lg:col-span-6 lg:col-start-1{_tx}">{inner_html}</div>'
-            pic_d  = f'<div class="col-span-12 lg:col-span-5 lg:col-start-8">{media}</div>'
-    elif reverse:   # image left, text right
+    if reverse:   # image left, text right
         text_d = f'<div class="col-span-12 lg:col-span-6 lg:col-start-6{_tx}">{inner_html}</div>'
         pic_d = f'<div class="col-span-12 lg:col-span-4 lg:col-start-2 lg:row-start-1">{media}</div>'
     else:         # image right, text left

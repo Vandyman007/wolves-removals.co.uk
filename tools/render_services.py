@@ -357,8 +357,20 @@ PAGE_IMG_PINS = {
     "piano-moving": {
         "panel": ("carrying-antique-piano-specialist-removals",
                   "Wolves Removals specialists carrying an antique piano during a careful move"),
+        "intro": ("antique-ornate-grand-piano",
+                  "An ornate antique rosewood grand piano with gilt mounts"),
+        "exclude": ["furniture-loaded-sussex-removal-service"],   # freed from the intro; keep it off the page
+        "sections": {
+            "The Specialist Equipment": ("antique-ebonised-gilt-upright-piano",
+                "An antique ebonised upright piano with gilt ormolu medallions", False),
+            "Protecting the Instrument": ("white-samick-upright-piano",
+                "A white Samick upright piano ready for moving", False),
+        },
     },
     "full-packing-service": {
+        "intro": ("removal-van-loaded-sussex-move",
+                  "A loaded Wolves Removals van during a Sussex house move"),
+        "exclude": ["careful-packing-sussex-home-removal"],   # freed from the intro; keep it off the page
         "sections": {
             "Protecting Fragile": ("lapada-approved-service-provider",
                 "LAPADA approved service provider, Association of Art &amp; Antiques Dealers", True),

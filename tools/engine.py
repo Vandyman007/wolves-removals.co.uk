@@ -1515,7 +1515,7 @@ EEAT_FLANK_POOL = [
     ("fleet-of-removal-vans-sussex", "The fleet of Wolves Removals vans in Sussex"),
     ("wolves-vans-residential-street", "Two branded Wolves Removals vans on a residential street"),
     ("wolves-van-outside-customer-home", "A Wolves Removals van outside a customer's home"),
-    ("removals-van-fleet-field-3", "The Wolves Removals van fleet parked in a field"),
+    ("removal-van-fleet-in-field", "The Wolves Removals van fleet parked in a field"),
 ]
 
 def eeat_flank(seed, used=()):

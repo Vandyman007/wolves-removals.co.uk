@@ -358,6 +358,12 @@ PAGE_IMG_PINS = {
         "panel": ("carrying-antique-piano-specialist-removals",
                   "Wolves Removals specialists carrying an antique piano during a careful move"),
     },
+    "full-packing-service": {
+        "sections": {
+            "Protecting Fragile": ("lapada-approved-service-provider",
+                "LAPADA approved service provider, Association of Art &amp; Antiques Dealers", True),
+        },
+    },
     "custom-crate-service": {
         "panel": ("wheeling-export-crate-on-trolley",
                   "A Wolves Removals export crate being wheeled out on a trolley"),

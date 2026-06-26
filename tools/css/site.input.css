@@ -597,6 +597,9 @@
 /* header CTA: white background so it stands out on the creme header (still black border, inverts on hover) */
 .button-orange.btn-white { background-color: #fff; }
 .button-orange.btn-white:hover, .button-orange.btn-white:focus { background-color: #262626; }
+/* hero "Get a Free Quote" CTA — solid brand orange (black label keeps ~9.5:1 contrast) */
+.button-orange.btn-cta-orange { background-color: #fc9700; border-color: #fc9700; color: #1a1a1a; }
+.button-orange.btn-cta-orange:hover, .button-orange.btn-cta-orange:focus { background-color: #e08600; border-color: #e08600; color: #1a1a1a; }
 /* Top contact-bar text: regular weight to match the nav; normal case. Hover stays orange. */
 .contact-bar a { color: #d9dbcd; font-weight: 400; }
 /* Top-level nav links only (not dropdown text): muted colour, regular (not-bold) weight. */

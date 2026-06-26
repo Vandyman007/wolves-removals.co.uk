@@ -153,7 +153,7 @@ def hero():
         '<h1 class="text-4xl lg:text-6xl font-bold leading-tight">Removals Company in Sussex</h1>'
         '<p class="mt-4 text-lg xl:text-xl max-w-xl">Looking for a reliable Sussex removals company? From local moves to '
         'long-distance relocations, we&rsquo;ve got you covered &mdash; packing, removals, storage and unpacking.</p>'
-        f'{E.hero_review_row(bullets_ul)}'
+        f'{E.hero_review_row(bullets_ul, quote_button=True)}'
         '</div></div></div></section>')
 
 def intro():

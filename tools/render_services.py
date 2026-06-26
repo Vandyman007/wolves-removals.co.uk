@@ -359,6 +359,20 @@ PAGE_IMG_PINS = {
                 "A Wolves Removals storage pod size guide showing how much each container holds", True),
         },
     },
+    "storage/business-and-commercial-storage": {
+        "sections": {
+            "Office Furniture": ("wolves-crew-setting-up-office",
+                "The Wolves Removals crew setting up office furniture and IT equipment between premises", False),
+        },
+    },
+    "student-storage": {
+        "panel": ("removal-van-beside-storage-containers",
+                  "A Wolves Removals van beside secure storage containers for student storage"),
+        "sections": {
+            "Boxing, Labelling": ("wolves-operator-forklift-storage-containers",
+                "A Wolves Removals operator driving a forklift to load student belongings into storage containers", False),
+        },
+    },
     "antiques-in-west-sussex": {
         **_ANTIQUES_HIP,
         "sections": {

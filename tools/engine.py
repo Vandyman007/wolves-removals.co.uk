@@ -1167,14 +1167,21 @@ def review_card(cls=""):
             f"<script defer async src='https://cdn.trustindex.io/loader.js?{TI_HERO_WIDGET}'></script>"
             '</div>')
 
-def hero_review_row(bullets_html=""):
+def hero_review_row(bullets_html="", quote_button=True):
     """Hero panel: optional bullets, then the Trustindex review widget with the
-    'top rated' badge beside it (side-by-side on desktop, wrapping on mobile)."""
+    'top rated' badge beside it (side-by-side on desktop, wrapping on mobile).
+    quote_button=True adds a 'Get a Free Quote' button beside the top-rated badge."""
     bullets = f'<div class="mt-6">{bullets_html}</div>' if bullets_html else ""
-    badge = ('<div class="ti-hero pt-[15px]" aria-label="Top rated service rating">'
+    badge = ('<div class="ti-hero pt-0" aria-label="Top rated service rating">'
              "<script defer async src='https://cdn.trustindex.io/loader.js?cd741d573fcc673344062ffdcd3'></script>"
              '</div>')
-    return f'{bullets}<div class="mt-6 flex flex-wrap items-center gap-4">{review_card()}{badge}</div>'
+    rc = review_card()
+    if quote_button:   # button spans the full combined width of the reviews card + badge
+        row = f'<div class="flex flex-wrap items-start gap-4">{rc}{badge}</div>'
+        btn = ('<a href="/get-a-quote/" class="button-orange btn-cta-orange w-full justify-center whitespace-nowrap">'
+               'Get a Free Quote</a>')
+        return f'{bullets}<div class="mt-6 inline-flex flex-col items-stretch gap-3 max-w-full">{row}{btn}</div>'
+    return f'{bullets}<div class="mt-6 flex flex-wrap items-center gap-4">{rc}{badge}</div>'
 
 def make_prose_styler(seed, photos=None, span="lg:col-span-10 lg:col-start-2"):
     """Returns styled(inner_html, bg) applying the storage blueprint to prose sections:
